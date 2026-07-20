@@ -1,0 +1,3 @@
+package geminitts
+
+var contractSchema = map[string]any{"text-to-speech": map[string]any{"models": []any{"gemini-2.5-pro-tts", "gemini-3.1-flash-tts"}, "fields_by_model": map[string]any{"gemini-2.5-pro-tts": map[string]any{"dialogue_turns": map[string]any{"required": true}, "model": map[string]any{"required": true}, "speakers": map[string]any{"required": true}, "temperature": map[string]any{"min": 0, "max": 2}}, "gemini-3.1-flash-tts": map[string]any{"dialogue_turns": map[string]any{"required": true}, "model": map[string]any{"required": true}, "speakers": map[string]any{"required": true}, "temperature": map[string]any{"min": 0, "max": 2}}}}}
