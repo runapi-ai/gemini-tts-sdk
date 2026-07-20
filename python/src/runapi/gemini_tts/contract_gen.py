@@ -4,13 +4,15 @@ CONTRACT = {
         "fields_by_model": {
             "gemini-2.5-pro-tts": {
                 "dialogue_turns": {
-                    "required": True
+                    "required": True,
+                    "min_items": 1
                 },
                 "model": {
                     "required": True
                 },
                 "speakers": {
-                    "required": True
+                    "required": True,
+                    "min_items": 1
                 },
                 "temperature": {
                     "min": 0,
@@ -19,13 +21,15 @@ CONTRACT = {
             },
             "gemini-3.1-flash-tts": {
                 "dialogue_turns": {
-                    "required": True
+                    "required": True,
+                    "min_items": 1
                 },
                 "model": {
                     "required": True
                 },
                 "speakers": {
-                    "required": True
+                    "required": True,
+                    "min_items": 1
                 },
                 "temperature": {
                     "min": 0,

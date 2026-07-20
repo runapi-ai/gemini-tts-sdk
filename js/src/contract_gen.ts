@@ -7,13 +7,15 @@ export const contract = {
     "fields_by_model": {
       "gemini-2.5-pro-tts": {
         "dialogue_turns": {
-          "required": true
+          "required": true,
+          "min_items": 1
         },
         "model": {
           "required": true
         },
         "speakers": {
-          "required": true
+          "required": true,
+          "min_items": 1
         },
         "temperature": {
           "min": 0,
@@ -22,13 +24,15 @@ export const contract = {
       },
       "gemini-3.1-flash-tts": {
         "dialogue_turns": {
-          "required": true
+          "required": true,
+          "min_items": 1
         },
         "model": {
           "required": true
         },
         "speakers": {
-          "required": true
+          "required": true,
+          "min_items": 1
         },
         "temperature": {
           "min": 0,
