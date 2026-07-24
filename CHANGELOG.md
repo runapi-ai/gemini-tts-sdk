@@ -1,5 +1,11 @@
 # Changelog
 
+## [python/v0.2.0](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/python%2Fv0.2.0) - 2026-07-24
+
+### Added
+- Expose shared Files, Account, and Pricing resources plus typed Task Billing Facts through the Provider Client.
+
+
 ## [js/v0.1.1](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/js%2Fv0.1.1), [ruby/v0.1.1](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/ruby%2Fv0.1.1), [go/v0.1.1](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/go%2Fv0.1.1), [python/v0.1.1](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/python%2Fv0.1.1) - 2026-07-20
 
 ### Changed
