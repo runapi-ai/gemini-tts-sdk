@@ -8,6 +8,33 @@ import (
 	"github.com/runapi-ai/core-sdk/go/core"
 )
 
+func TestAudioTaskResponseParsesBillingFacts(t *testing.T) {
+	var response AudioTaskResponse
+	err := json.Unmarshal([]byte(`{"id":"task_123","status":"completed","billing":{"reservation":{"amount_cents":10},"settlement":{"charged_amount_cents":9,"amount_micro_cents":950000},"refund":{"refunded_at":"2026-07-23T00:00:00.000000Z"}}}`), &response)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if response.Billing == nil || response.Billing.Reservation == nil || response.Billing.Settlement == nil || response.Billing.Refund == nil {
+		t.Fatalf("expected complete billing facts: %#v", response.Billing)
+	}
+}
+
+func TestAudioTaskResponsePreservesLargeBillingAmounts(t *testing.T) {
+	var response AudioTaskResponse
+	err := json.Unmarshal([]byte(`{"billing":{"reservation":{"amount_cents":2147483648},"settlement":{"charged_amount_cents":2147483649,"amount_micro_cents":2147483650}}}`), &response)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if response.Billing == nil || response.Billing.Reservation == nil || response.Billing.Settlement == nil {
+		t.Fatalf("expected billing facts: %#v", response.Billing)
+	}
+	if response.Billing.Reservation.AmountCents != 2_147_483_648 ||
+		response.Billing.Settlement.ChargedAmountCents != 2_147_483_649 ||
+		response.Billing.Settlement.AmountMicroCents != 2_147_483_650 {
+		t.Fatalf("large billing amounts were not preserved: %#v", response.Billing)
+	}
+}
+
 type stubHTTPClient struct {
 	method   string
 	path     string

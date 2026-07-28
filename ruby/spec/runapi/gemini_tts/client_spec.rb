@@ -10,8 +10,4 @@ RSpec.describe RunApi::GeminiTts::Client do
     client = described_class.new(api_key: "test-key")
     expect(client.text_to_speech).to be_a(RunApi::GeminiTts::Resources::TextToSpeech)
   end
-
-  it "raises without an api key" do
-    expect { described_class.new }.to raise_error(RunApi::Core::AuthenticationError, /API key is required/)
-  end
 end

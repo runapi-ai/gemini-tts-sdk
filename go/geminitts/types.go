@@ -1,6 +1,8 @@
 // Package geminitts provides the Gemini TTS multi-speaker speech API client.
 package geminitts
 
+import "github.com/runapi-ai/core-sdk/go/core"
+
 // Model selects the Gemini TTS model.
 type Model string
 
@@ -46,6 +48,7 @@ type AudioFile struct {
 
 // AudioTaskResponse is the normalized task status and speech result.
 type AudioTaskResponse struct {
+	core.TaskBillingFacts
 	ID     string      `json:"id"`
 	Status TaskStatus  `json:"status"`
 	Audios []AudioFile `json:"audios,omitempty"`

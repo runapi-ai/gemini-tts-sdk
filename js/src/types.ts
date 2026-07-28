@@ -1,4 +1,4 @@
-import type { AsyncTaskStatus } from '@runapi.ai/core';
+import type { AsyncTaskStatus, TaskBillingResponse, TaskResponse } from '@runapi.ai/core';
 
 /** Gemini TTS model exposed by RunAPI. */
 export type GeminiTtsModel = 'gemini-2.5-pro-tts' | 'gemini-3.1-flash-tts';
@@ -50,7 +50,7 @@ export interface TextToSpeechParams {
   callback_url?: string;
 }
 
-export interface TaskCreateResponse {
+export interface TaskCreateResponse extends TaskBillingResponse {
   id: string;
   status?: AsyncTaskStatus;
 }
@@ -59,7 +59,7 @@ export interface AudioFile {
   url: string;
 }
 
-export interface AudioTaskResponse {
+export interface AudioTaskResponse extends TaskResponse {
   id: string;
   status: AsyncTaskStatus;
   audios?: AudioFile[];
