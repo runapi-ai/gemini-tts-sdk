@@ -62,6 +62,6 @@ Manual locations:
 runapi gemini-tts text-to-speech --input-file request.json
 ```
 
-Links: [model](https://runapi.ai/models/gemini-tts), [API reference](https://runapi.ai/docs#gemini-tts), [SDK](https://github.com/runapi-ai/gemini-tts-sdk), [catalog](https://runapi.ai/models).
+Links: [model](https://runapi.ai/models/gemini-tts), [API reference](https://runapi.ai/docs/api/gemini-tts/text-to-speech), [SDK](https://github.com/runapi-ai/gemini-tts-sdk), [catalog](https://runapi.ai/models).
 
 Licensed under the Apache License, Version 2.0.

@@ -69,7 +69,7 @@ Use `create()` to submit without waiting, `get(id)` to fetch task status, or `ru
 - Model page: https://runapi.ai/models/gemini-tts
 - Gemini 2.5 Pro TTS: https://runapi.ai/models/gemini-tts/gemini-2.5-pro-tts
 - Gemini 3.1 Flash TTS: https://runapi.ai/models/gemini-tts/gemini-3.1-flash-tts
-- API reference: https://runapi.ai/docs#gemini-tts
+- API reference: https://runapi.ai/docs/api/gemini-tts/text-to-speech
 - Provider comparison: https://runapi.ai/providers/google
 - Full catalog: https://runapi.ai/models
 

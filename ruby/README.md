@@ -17,4 +17,4 @@ result = client.text_to_speech.run(
 )
 ```
 
-See the [model page](https://runapi.ai/models/gemini-tts) and [API reference](https://runapi.ai/docs#gemini-tts). Licensed under Apache-2.0.
+See the [model page](https://runapi.ai/models/gemini-tts) and [API reference](https://runapi.ai/docs/api/gemini-tts/text-to-speech). Licensed under Apache-2.0.
