@@ -4,14 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "runapi-gemini-tts"
-version = "0.2.0"
+version = "0.2.1"
 description = "RunAPI Gemini TTS SDK for multi-speaker speech generation in JavaScript, Python, Ruby, Go, Java, and PHP"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "Apache-2.0"
 authors = [{ name = "RunAPI", email = "contact@runapi.ai" }]
 keywords = ["runapi", "runapi-ai", "gemini-tts", "gemini", "google", "text-to-speech", "speech", "audio", "api", "sdk", "typescript", "python", "ruby", "golang", "java", "maven", "gradle"]
-dependencies = ["runapi-core>=0.3.1"]
+dependencies = ["runapi-core>=0.3.3"]
 
 [project.urls]
 Homepage = "https://runapi.ai/models/gemini-tts"
@@ -19,7 +19,7 @@ Documentation = "https://runapi.ai/docs/resources/sdks"
 Source = "https://github.com/runapi-ai/gemini-tts-sdk"
 Issues = "https://github.com/runapi-ai/gemini-tts-sdk/issues"
 Changelog = "https://github.com/runapi-ai/gemini-tts-sdk/blob/main/CHANGELOG.md"
-"Release Notes" = "https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/python%2Fv0.2.0"
+"Release Notes" = "https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/python%2Fv0.2.1"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/runapi"]
