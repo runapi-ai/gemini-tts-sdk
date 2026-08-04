@@ -3,7 +3,7 @@
 The Java module provides immutable clients, typed builders, polling helpers, file helpers, and consistent RunAPI errors.
 
 ```kotlin
-implementation("ai.runapi:runapi-gemini-tts:0.1.0")
+implementation("ai.runapi:runapi-gemini-tts:0.1.1")
 ```
 
 ```java

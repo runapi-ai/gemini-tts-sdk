@@ -26,9 +26,9 @@ export interface Speaker {
   voice_name: GeminiTtsVoiceName;
   /** Optional description of the desired voice character. */
   audio_profile?: string;
-  accent: GeminiTtsAccent;
-  style: GeminiTtsStyle;
-  pace: GeminiTtsPace;
+  accent?: GeminiTtsAccent;
+  style?: GeminiTtsStyle;
+  pace?: GeminiTtsPace;
 }
 
 /** One spoken turn, emitted in array order. */

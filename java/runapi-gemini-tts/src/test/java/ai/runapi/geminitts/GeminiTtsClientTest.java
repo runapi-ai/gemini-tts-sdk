@@ -51,7 +51,7 @@ class GeminiTtsClientTest {
     client.textToSpeech().create(
         TextToSpeechParams.builder()
             .model(TextToSpeechModel.GEMINI_2_5_PRO_TTS)
-            .speakers(java.util.Collections.singletonList(Speaker.builder().speakerId("Speaker 1").voiceName("Fenrir").accent("British (RP)").style("Deadpan").pace("Natural").build()))
+            .speakers(java.util.Collections.singletonList(Speaker.builder().speakerId("Speaker 1").voiceName("Fenrir").build()))
             .dialogueTurns(java.util.Collections.singletonList(DialogueTurn.builder().speakerId("Speaker 1").text("Welcome.").build()))
             .build()
     );
@@ -60,6 +60,10 @@ class GeminiTtsClientTest {
     assertEquals("/api/v1/gemini_tts/text_to_speech", transport.request.getPath());
     JsonNode body = bodyJson(transport.request);
     assertNotNull(body);
+    JsonNode speaker = body.path("speakers").get(0);
+    assertEquals(false, speaker.has("accent"));
+    assertEquals(false, speaker.has("style"));
+    assertEquals(false, speaker.has("pace"));
   }
 
   @Test

@@ -23,6 +23,15 @@ RSpec.describe RunApi::GeminiTts::Resources::TextToSpeech do
     expect(resource.create(**params).id).to eq("task-1")
   end
 
+  it "accepts omitted speaker controls and excludes their keys" do
+    request_params = params
+    request_params[:speakers].each { |speaker| %i[accent style pace].each { |control| speaker.delete(control) } }
+
+    expect(http).to receive(:request).with(:post, endpoint, body: request_params).and_return("id" => "task-1")
+    expect(resource.create(**request_params).id).to eq("task-1")
+    expect(request_params[:speakers]).to all(satisfy { |speaker| (speaker.keys & %i[accent style pace]).empty? })
+  end
+
   it "GETs and decodes audio results" do
     expect(http).to receive(:request).with(:get, "#{endpoint}/task-1").and_return(
       "id" => "task-1", "status" => "completed",

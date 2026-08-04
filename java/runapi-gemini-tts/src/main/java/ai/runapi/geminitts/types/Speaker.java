@@ -17,9 +17,9 @@ public final class Speaker {
     this.speakerId = GeminittsParamUtils.requireNonBlank(builder.speakerId, "speakerId");
     this.voiceName = GeminittsParamUtils.requireNonBlank(builder.voiceName, "voiceName");
     this.audioProfile = builder.audioProfile;
-    this.accent = GeminittsParamUtils.requireNonBlank(builder.accent, "accent");
-    this.style = GeminittsParamUtils.requireNonBlank(builder.style, "style");
-    this.pace = GeminittsParamUtils.requireNonBlank(builder.pace, "pace");
+    this.accent = builder.accent;
+    this.style = builder.style;
+    this.pace = builder.pace;
   }
 
   /** Creates a new Speaker builder. */

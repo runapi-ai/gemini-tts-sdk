@@ -1,5 +1,11 @@
 # Changelog
 
+## [js/v0.1.3](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/js%2Fv0.1.3), [ruby/v0.1.3](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/ruby%2Fv0.1.3), [go/v0.1.3](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/go%2Fv0.1.3), [python/v0.2.2](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/python%2Fv0.2.2), [java/v0.1.1](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/java%2Fv0.1.1) - 2026-08-04
+
+### Fixed
+- Allow speaker configurations to omit accent, style, and pace.
+
+
 ## [python/v0.2.1](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/python%2Fv0.2.1) - 2026-07-29
 
 ### Fixed

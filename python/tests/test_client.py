@@ -58,6 +58,25 @@ def test_create_posts_flat_nested_body():
     assert result.id == "task_1"
 
 
+def test_create_accepts_omitted_speaker_controls_and_excludes_keys():
+    fake = FakeHttp({"id": "task_1", "status": "processing"})
+    client = GeminiTtsClient(api_key="k", http_client=fake)
+    params = valid_params()
+    for speaker in params["speakers"]:
+        for control in ("accent", "style", "pace"):
+            speaker.pop(control)
+
+    result = client.text_to_speech.create(**params)
+
+    assert fake.calls == [("post", "/api/v1/gemini_tts/text_to_speech", params)]
+    assert result.id == "task_1"
+    assert all(
+        control not in speaker
+        for speaker in params["speakers"]
+        for control in ("accent", "style", "pace")
+    )
+
+
 def test_get_decodes_audio_results():
     fake = FakeHttp({
         "id": "task_1",

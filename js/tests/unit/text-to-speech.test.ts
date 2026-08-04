@@ -17,8 +17,7 @@ describe('TextToSpeech', () => {
       model: 'gemini-2.5-pro-tts',
       temperature: 0.8,
       speakers: [{
-        speaker_id: 'Speaker 1', voice_name: 'Fenrir', accent: 'British (RP)',
-        style: 'Deadpan', pace: 'Natural',
+        speaker_id: 'Speaker 1', voice_name: 'Fenrir',
       }],
       dialogue_turns: [{ speaker_id: 'Speaker 1', text: 'Welcome.' }],
     });
@@ -28,8 +27,7 @@ describe('TextToSpeech', () => {
         model: 'gemini-2.5-pro-tts',
         temperature: 0.8,
         speakers: [{
-          speaker_id: 'Speaker 1', voice_name: 'Fenrir', accent: 'British (RP)',
-          style: 'Deadpan', pace: 'Natural',
+          speaker_id: 'Speaker 1', voice_name: 'Fenrir',
         }],
         dialogue_turns: [{ speaker_id: 'Speaker 1', text: 'Welcome.' }],
       },

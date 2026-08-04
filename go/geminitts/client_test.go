@@ -59,7 +59,7 @@ func TestTextToSpeechCreate(t *testing.T) {
 		Model:       ModelGemini25ProTTS,
 		Temperature: &temperature,
 		Speakers: []Speaker{{
-			SpeakerID: "Speaker 1", VoiceName: "Fenrir", Accent: "British (RP)", Style: "Deadpan", Pace: "Natural",
+			SpeakerID: "Speaker 1", VoiceName: "Fenrir",
 		}},
 		DialogueTurns: []DialogueTurn{{SpeakerID: "Speaker 1", Text: "Welcome."}},
 	})
@@ -79,6 +79,11 @@ func TestTextToSpeechCreate(t *testing.T) {
 		speakers[0].(map[string]any)["speaker_id"] != "Speaker 1" ||
 		turns[0].(map[string]any)["text"] != "Welcome." {
 		t.Fatalf("nested arrays missing from body: %v", body)
+	}
+	for _, key := range []string{"accent", "style", "pace"} {
+		if _, ok := speakers[0].(map[string]any)[key]; ok {
+			t.Fatalf("optional speaker field %q should be omitted: %v", key, body)
+		}
 	}
 	if resp.ID != "task_123" {
 		t.Fatalf("unexpected task ID: %s", resp.ID)

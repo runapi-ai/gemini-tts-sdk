@@ -19,9 +19,9 @@ type Speaker struct {
 	SpeakerID    string `json:"speaker_id" help:"required; identifier in Speaker N format"`
 	VoiceName    string `json:"voice_name" help:"required; Gemini TTS voice name"`
 	AudioProfile string `json:"audio_profile,omitempty" help:"optional; desired voice character"`
-	Accent       string `json:"accent" help:"required; supported accent"`
-	Style        string `json:"style" help:"required; supported delivery style"`
-	Pace         string `json:"pace" help:"required; supported delivery pace"`
+	Accent       string `json:"accent,omitempty" help:"optional; supported accent"`
+	Style        string `json:"style,omitempty" help:"optional; supported delivery style"`
+	Pace         string `json:"pace,omitempty" help:"optional; supported delivery pace"`
 }
 
 // DialogueTurn is one spoken turn, emitted in array order.
