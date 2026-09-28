@@ -48,7 +48,7 @@ type AudioFile struct {
 
 // AudioTaskResponse is the normalized task status and speech result.
 type AudioTaskResponse struct {
-	core.TaskBillingFacts
+	Usage *core.TaskUsage `json:"usage,omitempty"`
 	ID     string      `json:"id"`
 	Status TaskStatus  `json:"status"`
 	Audios []AudioFile `json:"audios,omitempty"`

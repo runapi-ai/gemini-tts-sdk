@@ -1,5 +1,15 @@
 # Changelog
 
+## [js/v0.1.4](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/js%2Fv0.1.4), [go/v0.1.4](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/go%2Fv0.1.4) - 2026-09-28
+
+### Added
+- Return usage.cost as a float USD amount on completed async Task query and webhook envelopes.
+
+### Removed
+- Remove the public Task billing object from Task envelopes.
+  Migration: Read usage.cost on completed Task envelopes. Create, processing, and failed envelopes omit usage.
+
+
 ## [ruby/v0.1.5](https://github.com/runapi-ai/gemini-tts-sdk/releases/tag/ruby%2Fv0.1.5) - 2026-09-04
 
 ### Changed

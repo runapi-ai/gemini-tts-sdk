@@ -33,10 +33,8 @@ def valid_params():
             "voice_name": "Fenrir",
             "accent": "British (RP)",
             "style": "Deadpan",
-            "pace": "Natural",
-        }],
-        "dialogue_turns": [{"speaker_id": "Speaker 1", "text": "Welcome."}],
-    }
+            "pace": "Natural"}],
+        "dialogue_turns": [{"speaker_id": "Speaker 1", "text": "Welcome."}]}
 
 
 def test_raises_without_api_key():
@@ -80,9 +78,8 @@ def test_create_accepts_omitted_speaker_controls_and_excludes_keys():
 def test_get_decodes_audio_results():
     fake = FakeHttp({
         "id": "task_1",
-        "status": "completed",
-        "audios": [{"url": "https://tempfile.runapi.ai/dialogue.mp3"}],
-    })
+        "status": "completed", "usage": {"cost": 0.05},
+        "audios": [{"url": "https://tempfile.runapi.ai/dialogue.mp3"}]})
     client = GeminiTtsClient(api_key="k", http_client=fake)
     result = client.text_to_speech.get("task_1")
 
@@ -93,7 +90,7 @@ def test_get_decodes_audio_results():
 def test_run_returns_completed_response():
     fake = FakeHttp(
         {"id": "task_1", "status": "processing"},
-        {"id": "task_1", "status": "completed", "audios": [{"url": "https://tempfile.runapi.ai/dialogue.mp3"}]},
+        {"id": "task_1", "status": "completed", "usage": {"cost": 0.05}, "audios": [{"url": "https://tempfile.runapi.ai/dialogue.mp3"}]},
     )
     client = GeminiTtsClient(api_key="k", http_client=fake)
     result = client.text_to_speech.run(**valid_params())

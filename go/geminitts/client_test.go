@@ -8,30 +8,22 @@ import (
 	"github.com/runapi-ai/core-sdk/go/core"
 )
 
-func TestAudioTaskResponseParsesBillingFacts(t *testing.T) {
+func TestAudioTaskResponseParsesCompletedUsage(t *testing.T) {
 	var response AudioTaskResponse
-	err := json.Unmarshal([]byte(`{"id":"task_123","status":"completed","billing":{"reservation":{"amount_cents":10},"settlement":{"charged_amount_cents":9,"amount_micro_cents":950000},"refund":{"refunded_at":"2026-07-23T00:00:00.000000Z"}}}`), &response)
+	err := json.Unmarshal([]byte(`{"id":"task_123","status":"completed","usage":{"cost":0.05}}`), &response)
 	if err != nil {
 		t.Fatal(err)
-	}
-	if response.Billing == nil || response.Billing.Reservation == nil || response.Billing.Settlement == nil || response.Billing.Refund == nil {
-		t.Fatalf("expected complete billing facts: %#v", response.Billing)
 	}
 }
 
-func TestAudioTaskResponsePreservesLargeBillingAmounts(t *testing.T) {
+func TestAudioTaskResponseParsesUsageCost(t *testing.T) {
 	var response AudioTaskResponse
-	err := json.Unmarshal([]byte(`{"billing":{"reservation":{"amount_cents":2147483648},"settlement":{"charged_amount_cents":2147483649,"amount_micro_cents":2147483650}}}`), &response)
+	err := json.Unmarshal([]byte(`{"id":"task_123","status":"completed","usage":{"cost":123456.789}}`), &response)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if response.Billing == nil || response.Billing.Reservation == nil || response.Billing.Settlement == nil {
-		t.Fatalf("expected billing facts: %#v", response.Billing)
-	}
-	if response.Billing.Reservation.AmountCents != 2_147_483_648 ||
-		response.Billing.Settlement.ChargedAmountCents != 2_147_483_649 ||
-		response.Billing.Settlement.AmountMicroCents != 2_147_483_650 {
-		t.Fatalf("large billing amounts were not preserved: %#v", response.Billing)
+	if response.Usage == nil || response.Usage.Cost != 123456.789 {
+		t.Fatalf("usage cost was not preserved: %#v", response.Usage)
 	}
 }
 
@@ -59,10 +51,8 @@ func TestTextToSpeechCreate(t *testing.T) {
 		Model:       ModelGemini25ProTTS,
 		Temperature: &temperature,
 		Speakers: []Speaker{{
-			SpeakerID: "Speaker 1", VoiceName: "Fenrir",
-		}},
-		DialogueTurns: []DialogueTurn{{SpeakerID: "Speaker 1", Text: "Welcome."}},
-	})
+			SpeakerID: "Speaker 1", VoiceName: "Fenrir"}},
+		DialogueTurns: []DialogueTurn{{SpeakerID: "Speaker 1", Text: "Welcome."}}})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -91,7 +81,7 @@ func TestTextToSpeechCreate(t *testing.T) {
 }
 
 func TestTextToSpeechGet(t *testing.T) {
-	stub := &stubHTTPClient{response: json.RawMessage(`{"id":"task_456","status":"completed","audios":[{"url":"https://tempfile.runapi.ai/dialogue.mp3"}]}`)}
+	stub := &stubHTTPClient{response: json.RawMessage(`{"id":"task_456","status":"completed", "usage": {"cost": 0.05},"audios":[{"url":"https://tempfile.runapi.ai/dialogue.mp3"}]}`)}
 	client := NewClientWithHTTP(stub)
 	resp, err := client.TextToSpeech.Get(context.Background(), "task_456")
 	if err != nil {
