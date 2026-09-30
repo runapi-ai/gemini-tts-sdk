@@ -21,7 +21,6 @@ module RunApi
 
         def create(options: nil, **params)
           params = compact_params(params)
-          validate_contract!(CONTRACT["text-to-speech"], params)
           request(:post, ENDPOINT, body: params, options: options)
         end
 

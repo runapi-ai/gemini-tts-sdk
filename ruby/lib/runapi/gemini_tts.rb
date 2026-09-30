@@ -2,7 +2,6 @@
 
 require "runapi/core"
 require_relative "gemini_tts/types"
-require_relative "gemini_tts/contract_gen"
 require_relative "gemini_tts/resources/text_to_speech"
 require_relative "gemini_tts/client"
 

@@ -36,7 +36,7 @@ go get github.com/runapi-ai/gemini-tts-sdk/go@latest
 Gradle:
 
 ```kotlin
-implementation("ai.runapi:runapi-gemini-tts:0.1.1")
+implementation("ai.runapi:runapi-gemini-tts:0.2.0")
 ```
 
 The PHP package is published from the split Composer repository as `runapi-ai/gemini-tts`; see https://github.com/runapi-ai/gemini-tts-php.

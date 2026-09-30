@@ -10,8 +10,8 @@ public final class DialogueTurn {
   private final String text;
 
   private DialogueTurn(Builder builder) {
-    this.speakerId = GeminittsParamUtils.requireNonBlank(builder.speakerId, "speakerId");
-    this.text = GeminittsParamUtils.requireNonBlank(builder.text, "text");
+    this.speakerId = builder.speakerId;
+    this.text = builder.text;
   }
 
   /** Creates a new DialogueTurn builder. */
@@ -45,13 +45,13 @@ public final class DialogueTurn {
 
     /** Sets the speaker ID. */
     public Builder speakerId(String value) {
-      this.speakerId = GeminittsParamUtils.requireNonBlank(value, "speakerId");
+      this.speakerId = value;
       return this;
     }
 
     /** Sets the line text. */
     public Builder text(String value) {
-      this.text = GeminittsParamUtils.requireNonBlank(value, "text");
+      this.text = value;
       return this;
     }
 

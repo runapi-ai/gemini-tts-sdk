@@ -14,8 +14,8 @@ public final class Speaker {
   private final String pace;
 
   private Speaker(Builder builder) {
-    this.speakerId = GeminittsParamUtils.requireNonBlank(builder.speakerId, "speakerId");
-    this.voiceName = GeminittsParamUtils.requireNonBlank(builder.voiceName, "voiceName");
+    this.speakerId = builder.speakerId;
+    this.voiceName = builder.voiceName;
     this.audioProfile = builder.audioProfile;
     this.accent = builder.accent;
     this.style = builder.style;
@@ -81,37 +81,37 @@ public final class Speaker {
 
     /** Sets the speaker ID. */
     public Builder speakerId(String value) {
-      this.speakerId = GeminittsParamUtils.requireNonBlank(value, "speakerId");
+      this.speakerId = value;
       return this;
     }
 
     /** Sets the voice name. */
     public Builder voiceName(String value) {
-      this.voiceName = GeminittsParamUtils.requireNonBlank(value, "voiceName");
+      this.voiceName = value;
       return this;
     }
 
     /** Sets the audio profile. */
     public Builder audioProfile(String value) {
-      this.audioProfile = GeminittsParamUtils.requireNonBlank(value, "audioProfile");
+      this.audioProfile = value;
       return this;
     }
 
     /** Sets the accent. */
     public Builder accent(String value) {
-      this.accent = GeminittsParamUtils.requireNonBlank(value, "accent");
+      this.accent = value;
       return this;
     }
 
     /** Sets the style. */
     public Builder style(String value) {
-      this.style = GeminittsParamUtils.requireNonBlank(value, "style");
+      this.style = value;
       return this;
     }
 
     /** Sets the pace. */
     public Builder pace(String value) {
-      this.pace = GeminittsParamUtils.requireNonBlank(value, "pace");
+      this.pace = value;
       return this;
     }
 

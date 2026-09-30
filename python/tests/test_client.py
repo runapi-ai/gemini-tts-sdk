@@ -1,7 +1,7 @@
 import pytest
 
 from runapi.core import config
-from runapi.core.errors import AuthenticationError, ValidationError
+from runapi.core.errors import AuthenticationError
 from runapi.gemini_tts import GeminiTtsClient
 from runapi.gemini_tts.resources.text_to_speech import TextToSpeech
 from runapi.gemini_tts.types import CompletedAudioTaskResponse
@@ -96,12 +96,3 @@ def test_run_returns_completed_response():
     result = client.text_to_speech.run(**valid_params())
 
     assert isinstance(result, CompletedAudioTaskResponse)
-
-
-def test_contract_requires_nested_collections():
-    client = GeminiTtsClient(api_key="k", http_client=FakeHttp())
-    params = valid_params()
-    params.pop("speakers")
-
-    with pytest.raises(ValidationError, match="speakers is required"):
-        client.text_to_speech.create(**params)

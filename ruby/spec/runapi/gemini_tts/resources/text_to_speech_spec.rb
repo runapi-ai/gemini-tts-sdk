@@ -40,9 +40,4 @@ RSpec.describe RunApi::GeminiTts::Resources::TextToSpeech do
     result = resource.get("task-1")
     expect(result.audios.first.url).to eq("https://tempfile.runapi.ai/dialogue.mp3")
   end
-
-  it "requires speakers" do
-    expect { resource.create(**params.except(:speakers)) }
-      .to raise_error(RunApi::Core::ValidationError, /speakers is required/)
-  end
 end

@@ -16,12 +16,12 @@ public final class TextToSpeechParams {
   private final String callbackUrl;
 
   private TextToSpeechParams(Builder builder) {
-    this.model = GeminittsParamUtils.requireNonBlankTrim(builder.model, "model");
+    this.model = builder.model;
     this.temperature = builder.temperature;
     this.scene = builder.scene;
     this.sampleContext = builder.sampleContext;
-    this.speakers = GeminittsParamUtils.requiredList(builder.speakers, "speakers");
-    this.dialogueTurns = GeminittsParamUtils.requiredList(builder.dialogueTurns, "dialogueTurns");
+    this.speakers = GeminittsParamUtils.list(builder.speakers);
+    this.dialogueTurns = GeminittsParamUtils.list(builder.dialogueTurns);
     this.callbackUrl = builder.callbackUrl;
   }
 
@@ -54,7 +54,7 @@ public final class TextToSpeechParams {
     }
     List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
     for (Speaker item : values) {
-      result.add(item.toMap());
+      result.add(item == null ? null : item.toMap());
     }
     return java.util.Collections.unmodifiableList(result);
   }
@@ -65,7 +65,7 @@ public final class TextToSpeechParams {
     }
     List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
     for (DialogueTurn item : values) {
-      result.add(item.toMap());
+      result.add(item == null ? null : item.toMap());
     }
     return java.util.Collections.unmodifiableList(result);
   }
@@ -90,7 +90,7 @@ public final class TextToSpeechParams {
 
     /** Sets the model slug using a string value. */
     public Builder model(String value) {
-      this.model = GeminittsParamUtils.requireNonBlankTrim(value, "model");
+      this.model = value;
       return this;
     }
 
@@ -103,13 +103,13 @@ public final class TextToSpeechParams {
 
     /** Sets the scene. */
     public Builder scene(String value) {
-      this.scene = GeminittsParamUtils.requireNonBlank(value, "scene");
+      this.scene = value;
       return this;
     }
 
     /** Sets the sample context. */
     public Builder sampleContext(String value) {
-      this.sampleContext = GeminittsParamUtils.requireNonBlank(value, "sampleContext");
+      this.sampleContext = value;
       return this;
     }
 
@@ -127,7 +127,7 @@ public final class TextToSpeechParams {
 
     /** Sets the webhook URL for task completion notifications. */
     public Builder callbackUrl(String value) {
-      this.callbackUrl = GeminittsParamUtils.requireNonBlank(value, "callbackUrl");
+      this.callbackUrl = value;
       return this;
     }
 
